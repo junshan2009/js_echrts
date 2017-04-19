@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+    <title>ECharts</title>
+   <script type="text/javascript" src="echarts.js" ></script>
+</head>
+
+<body>
+<div id="main" style="width:100%;height:400px;"></div>
+    <script type="text/javascript">
+	var myChart=echarts.init( document.getElementById('main'));
+     var  option = {
+    title : {
+        text: '专卖店全国销售',
+        subtext: '鲍凯歌',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        x : 'center',
+        y : 'bottom',
+        data:['东北','华北','华东','华南','华中','西北','西南']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'台数',
+            type:'pie',
+            radius : [20, 110],
+            center : ['25%', '50%'],
+            roseType : 'radius',
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            lableLine: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            data:[
+                {value:2.5, name:'东北'},
+                {value:5.4, name:'华北'},
+                {value:3.9, name:'华东'},
+                {value:2.5, name:'华南'},
+                {value:4.0, name:'华中'},
+                {value:4.2, name:'西北'},
+                {value:6.7, name:'西南'} 
+            ]
+        },
+        {
+            name:'GMV',
+            type:'pie',
+            radius : [30, 110],
+            center : ['75%', '50%'],
+            roseType : 'area',
+            data:[
+                 {value:2866, name:'东北'},
+                {value:8847, name:'华北'},
+                {value:3792, name:'华东'},
+                {value:2252, name:'华南'},
+                {value:3903, name:'华中'},
+                {value:1298, name:'西北'},
+                {value:7392, name:'西南'} 
+            ]
+        }
+    ]
+};
+myChart.setOption(option);
+    </script>
+</body>
+</html>
